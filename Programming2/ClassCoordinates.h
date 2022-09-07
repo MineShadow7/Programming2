@@ -22,7 +22,7 @@ public:
 		return res;
 	}
 
-	Coordinates& operator=(const Coordinates& n) {
+	Coordinates& operator=(const Coordinates n) {
 		if (this == &n) {
 			return *this;
 		}
