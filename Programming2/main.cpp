@@ -1,12 +1,11 @@
-#include <iostream>
-#include "ClassCoordinates.h"
+#include "ClassCoordinates.cpp"
 
-  // Add a comment to commit changes.
-  // No need to pay attention to these comments.
+
 int main() {
-	std::cout << "Hello World" << std::endl;
-	Coordinates A(5, 4), B(1, 6), C;
-	C = B + A;
-	std::cout << C;
+	Coordinates<float> A(5.4, 4.2), B(3.1, 5.8), C(A);
+	A.print();
+	B.print();
+	C = A + B;
+	std::cout << C << std::endl;
 	return 0;
 }
