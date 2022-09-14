@@ -1,12 +1,25 @@
 // Copyright 2022 Karagodin Andrey Romanovich. All rights reserved.
-#include "ClassCoordinates.cpp"
+#include <iostream>
+#include <vector>
 
+enum status {
+	Private,
+	Public,
+	Protected
+};
 
 int main() {
-    Coordinates<float> A(5.4, 4.2), B(3.1, 5.8), C(A);
-    A.print();
-    B.print();
-    C = A + B;
-    std::cout << C << std::endl;
-    return 0;
+	std::vector<std::pair<int, float>> classTest;
+	for (int i = 0; i < 10; i++) {
+		std::pair<int, float> newpair;
+		newpair.first = rand() % 3;
+		newpair.second = rand() % 10;
+		classTest.push_back(newpair);
+	}
+
+	for (std::vector<std::pair<int, float>>::iterator it = begin(classTest); it != end(classTest); ++it) {
+		std::cout << (*it).first << " " << (*it).second << std::endl;
+	}
+
+	return 0;
 }
