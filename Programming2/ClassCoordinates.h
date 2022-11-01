@@ -1,23 +1,24 @@
+#pragma once
 // Copyright 2022 Karagodin Andrey Romanovich. All rights reserved.
 #include <iostream>
 
-template <class Type> class TPair;
-template <class Type> std::ostream& operator <<(std::ostream& out, const TPair<Type>& r);
+template <class Type> class TCoordinates;
+template <class Type> std::ostream& operator <<(std::ostream& out, const TCoordinates<Type>& r);
 
 template <class Type>
-class TPair {
+class TCoordinates {
     Type first;
     Type second;
 
 public:
-    TPair() : first(0), second(0) {}
+    TCoordinates() : first(0), second(0) {}
 
-    TPair(Type _first, Type _second) {
+    TCoordinates(Type _first, Type _second) {
         first = _first;
         second = _second;
     }
 
-    TPair(const TPair& other) {
+    TCoordinates(const TCoordinates& other) {
         first = other.first;
         second = other.second;
     }
@@ -26,14 +27,14 @@ public:
         std::cout << "(" << first << ", " << second << ")" << std::endl;
     }
 
-    TPair& operator+(const TPair& n) {
-        TPair res;
+    TCoordinates& operator+(const TCoordinates& n) {
+        TCoordinates res;
         res.first = first + n.first;
         res.second = second + n.second;
         return res;
     }
 
-    TPair& operator=(const TPair n) {
+    TCoordinates& operator=(const TCoordinates n) {
         if (this == &n) {
             return *this;
         }
@@ -42,11 +43,11 @@ public:
         return *this;
     }
 
-    friend std::ostream& operator<< <Type>(std::ostream& out, const TPair& r);
+    friend std::ostream& operator<< <Type>(std::ostream& out, const TCoordinates& r);
 };
 
 template <class Type>
-std::ostream& operator <<(std::ostream& out, const TPair<Type>& r) {
+std::ostream& operator <<(std::ostream& out, const TCoordinates<Type>& r) {
     out << "(" << r.first << ", " << r.second << ")" << std::endl;
     return out;
 }
