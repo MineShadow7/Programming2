@@ -8,6 +8,7 @@
 #include <iterator>
 #include <random>
 #include <stack>
+#include <set>
 
 struct RandomGenerator
 {
@@ -138,7 +139,8 @@ int main() {
             std::cout << *iter << " ";
             ++iter;
         }
-    }else
+    }
+    else
     {
         for (std::vector<int>::reverse_iterator i = v.rbegin();
             i != v.rend(); ++i) {
@@ -157,7 +159,7 @@ int main() {
     std::list<int> l;
     int lval;
     for (int i = 0; i < 5; i++) {
-        lval = rand() % + 20;
+        lval = rand() % +20;
         l.push_back(lval);
     }
     auto itera = l.begin();
@@ -210,10 +212,10 @@ int main() {
 
     itera = l.begin();
     int lpos;
-    lval = rand() % + 20;
+    lval = rand() % +20;
     for (int i = 0; i < 3; i++) {
         itera = l.begin();
-        lpos = rand() % + 6;
+        lpos = rand() % +6;
         std::advance(itera, lpos);
         l.insert(itera, lval);
     }
@@ -255,7 +257,7 @@ int main() {
     std::cout << std::endl << "Remove first element in list" << std::endl;
     system("PAUSE");
 
-    lval = rand() % + 20;
+    lval = rand() % +20;
     itera = l.begin();
     std::advance(itera, 4);
     l.insert(itera, 2, lval);
@@ -292,6 +294,8 @@ int main() {
         std::cout << "List is cleared and empty." << std::endl;
     }
     system("PAUSE");
+
+    //Block Stack Tasks
 
     bool exit = false;
     int action;
@@ -342,5 +346,98 @@ int main() {
         }
     }
 
+
+    //Block Set Tasks
+
+    std::set<int> mn1;
+    std::set<int> mn2;
+    std::vector<int> res;
+
+    bool mnexit = false;
+    int mnaction;
+    int mnval;
+    bool choice;
+
+    while (mnexit != true) {
+        std::cout << "Enter number of action:" << std::endl << "1: Add element into set A" << std::endl << "2: Add element into set B"
+            << std::endl << "3: Intersection of A and B" << std::endl << "4: Union of A and B" << std::endl << "5: Difference of A and B" <<
+            std::endl << "6: Addition of A and B" << std::endl;
+        std::cin >> mnaction;
+        switch (mnaction)
+        {
+        case 1:
+            std::cout << "Enter a value:";
+            std::cin >> mnval;
+            mn1.insert(mnval);
+            for (const auto& i : mn1) std::cout << i << " ";
+            std::cout << std::endl;
+            break;
+        case 2:
+            std::cout << "Enter a value:";
+            std::cin >> mnval;
+            mn2.insert(mnval);
+            for (const auto& i : mn2) std::cout << i << " ";
+            std::cout << std::endl;
+            break;
+        case 3:
+            res.clear();
+            std::set_intersection(
+                mn1.begin(), mn1.end(),
+                mn2.begin(), mn2.end(),
+                std::back_inserter(res));
+
+            std::cout << "Intersection values of A and B: ";
+            for (const auto& i : res) std::cout << i << " ";
+            std::cout << std::endl;
+            break;
+        case 4:
+            res.clear();
+            std::set_union(
+                mn1.begin(), mn1.end(),
+                mn2.begin(), mn2.end(),
+                std::back_inserter(res));
+
+            std::cout << "Union values of A and B: ";
+            for (const auto& i : res) std::cout << i << " ";
+            std::cout << std::endl;
+            break;
+        case 5:
+            res.clear();
+            std::set_difference(
+                mn1.begin(), mn1.end(),
+                mn2.begin(), mn2.end(),
+                std::back_inserter(res));
+
+            std::cout << "Difference values of A and B: ";
+            for (const auto& i : res) std::cout << i << " ";
+            std::cout << std::endl;
+            break;
+        case 6:
+            res.clear();
+            std::cout << "Addition of A (0) or B(1): ";
+            std::cin >> choice;
+            if (choice == 0) {
+                std::set_difference(
+                    mn2.begin(), mn2.end(),
+                    mn1.begin(), mn1.end(),
+                    std::back_inserter(res));
+
+                std::cout << "Addition of A: ";
+                for (const auto& i : res) std::cout << i << " ";
+                std::cout << std::endl;
+            }
+            if (choice == 1) {
+                std::set_difference(
+                    mn1.begin(), mn1.end(),
+                    mn2.begin(), mn2.end(),
+                    std::back_inserter(res));
+
+                std::cout << "Addition of B: ";
+                for (const auto& i : res) std::cout << i << " ";
+                std::cout << std::endl;
+            }
+            break;
+        }
+    }
     return 0;
 }
