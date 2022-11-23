@@ -27,14 +27,14 @@ public:
         std::cout << "(" << first << ", " << second << ")" << std::endl;
     }
 
-    TCoordinates& operator+(const TCoordinates& n) {
+    TCoordinates operator+(const TCoordinates& n) {
         TCoordinates res;
         res.first = first + n.first;
         res.second = second + n.second;
         return res;
     }
 
-    TCoordinates& operator=(const TCoordinates n) {
+    TCoordinates& operator=(const TCoordinates& n) {
         if (this == &n) {
             return *this;
         }

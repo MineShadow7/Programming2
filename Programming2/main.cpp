@@ -18,26 +18,16 @@ int main() {
 
     //HW2 Standart template classes.
     std::vector<std::pair<std::string, float>> classTest;
+    std::string types[3] = { "Public", "Protected", "Private" };
     for (int i = 0; i < 10; i++) {
         std::pair<std::string, float> newpair;
         int r = rand() % 3;
-        switch (r)
-        {
-        case 0:
-            newpair.first = "Private";
-            break;
-        case 1:
-            newpair.first = "Public";
-            break;
-        case 2:
-            newpair.first = "Protected";
-            break;
-        }
+        newpair.first = types[r];
         newpair.second = rand() % 10;
         classTest.push_back(newpair);
     }
 
-    for (std::vector<std::pair<std::string, float>>::iterator it = begin(classTest); it != end(classTest); ++it) {
+    for (auto it = begin(classTest); it != end(classTest); ++it) {
         std::cout << (*it).first << " " << (*it).second << std::endl;
     }
 
@@ -46,7 +36,7 @@ int main() {
 
 
     std::cout << "Finished creating pairs. Now working..." << std::endl;
-    for (std::vector<std::pair<std::string, float>>::iterator it = begin(classTest); it != end(classTest); ++it){
+    for (auto it = begin(classTest); it != end(classTest); ++it){
         auto pos = std::find_if(std::begin(classTest), std::end(classTest), isProtected);
         if (pos != std::end(classTest)) {
             (*pos).first = "Private";
@@ -55,7 +45,7 @@ int main() {
     }
     std::cout << "Finished working with Protected pairs. Now working..." << std::endl;
 
-    for (std::vector<std::pair<std::string, float>>::iterator it = begin(classTest); it != end(classTest); ++it) {
+    for (auto it = begin(classTest); it != end(classTest); ++it) {
         auto pos = std::find_if(std::begin(classTest), std::end(classTest), isPublic);
         if (pos != std::end(classTest)) {
             (*pos).first = "0";
