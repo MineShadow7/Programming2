@@ -1,6 +1,6 @@
+// Copyright 2022 Karagodin Andrey Romanovich.
+
 #pragma once
-#ifndef INCLUDE_BITFIELD_H_
-#define INCLUDE_BITFIELD_H_
 
 #include <iostream>
 #include <bit>
@@ -147,5 +147,3 @@ public:
         return ostr;
     }
 };
-
-#endif  // INCLUDE_BITFIELD_H_

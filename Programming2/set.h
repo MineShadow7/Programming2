@@ -1,5 +1,4 @@
-#ifndef INCLUDE_SET_H_
-#define INCLUDE_SET_H_
+// Copyright 2022 Karagodin Andrey Romanovich.
 
 #include <iostream>
 #include "bitfield.h"
@@ -108,5 +107,3 @@ public:
         return out;
     };
 };
-
-#endif  // INCLUDE_SET_H_
